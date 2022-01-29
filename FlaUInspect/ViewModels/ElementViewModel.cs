@@ -30,7 +30,7 @@ namespace FlaUInspect.ViewModels
 
         public bool IsSelected
         {
-            get { return GetProperty<bool>(); }
+            get { return GetProperty<bool>("IsSelected"); }
             set
             {
                 try
@@ -60,7 +60,7 @@ namespace FlaUInspect.ViewModels
                         SelectionChanged?.Invoke(this);
                     }
 
-                    SetProperty(value);
+                    SetProperty(value,"IsSelected");
                 }
                 catch (Exception ex)
                 {
@@ -71,10 +71,10 @@ namespace FlaUInspect.ViewModels
 
         public bool IsExpanded
         {
-            get { return GetProperty<bool>(); }
+            get { return GetProperty<bool>("IsExpanded"); }
             set
             {
-                SetProperty(value);
+                SetProperty(value, "IsExpanded");
                 if (value)
                 {
                     LoadChildren(true);
@@ -148,7 +148,7 @@ namespace FlaUInspect.ViewModels
                 if (elementCached != null)
                 {
                     // Element identification
-                    var identification = new List<IDetailViewModel>
+                    var identification = new List<DetailViewModel>
                     {
                         DetailViewModel.FromAutomationProperty("AutomationId", elementCached.Properties.AutomationId),
                         DetailViewModel.FromAutomationProperty("Name", elementCached.Properties.Name),

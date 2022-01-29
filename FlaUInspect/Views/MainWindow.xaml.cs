@@ -25,11 +25,11 @@ namespace FlaUInspect.Views
 
         private void AppendVersionToTitle()
         {
-            var attr = Assembly.GetEntryAssembly().GetCustomAttribute(typeof(AssemblyInformationalVersionAttribute)) as AssemblyInformationalVersionAttribute;
-            if (attr != null)
-            {
-                Title += " v" + attr.InformationalVersion;
-            }
+            //var attr = Assembly.GetEntryAssembly().GetCustomAttribute(typeof(AssemblyInformationalVersionAttribute)) as AssemblyInformationalVersionAttribute;
+            //if (attr != null)
+            //{
+            //    Title += " v" + attr.InformationalVersion;
+            //}
         }
 
         private void MainWindow_Loaded(object sender, System.EventArgs e)

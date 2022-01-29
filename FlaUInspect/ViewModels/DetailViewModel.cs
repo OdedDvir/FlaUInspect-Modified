@@ -18,9 +18,9 @@ namespace FlaUInspect.ViewModels
             Value = value;
         }
 
-        public string Key { get { return GetProperty<string>(); } set { SetProperty(value); } }
-        public string Value { get { return GetProperty<string>(); } set { SetProperty(value); } }
-        public bool Important { get { return GetProperty<bool>(); } set { SetProperty(value); } }
+        public string Key { get { return GetProperty<string>("Key"); } set { SetProperty(value,"Key"); } }
+        public string Value { get { return GetProperty<string>("Value"); } set { SetProperty(value,"Value"); } }
+        public bool Important { get { return GetProperty<bool>("Important"); } set { SetProperty(value,"Important"); } }
 
         public static DetailViewModel FromAutomationProperty<T>(string key, IAutomationProperty<T> value)
         {

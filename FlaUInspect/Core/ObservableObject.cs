@@ -17,7 +17,7 @@ namespace FlaUInspect.Core
         /// <summary>
         /// Gets a property value from the internal backing field
         /// </summary>
-        protected T GetProperty<T>([CallerMemberName] string propertyName = null)
+        protected T GetProperty<T>(string propertyName)
         {
             if (propertyName == null)
             {
@@ -34,7 +34,7 @@ namespace FlaUInspect.Core
         /// <summary>
         /// Saves a property value to the internal backing field
         /// </summary>
-        protected bool SetProperty<T>(T newValue, [CallerMemberName] string propertyName = null)
+        protected bool SetProperty<T>(T newValue, string propertyName)
         {
             if (propertyName == null)
             {
@@ -49,7 +49,7 @@ namespace FlaUInspect.Core
         /// <summary>
         /// Sets a property value to the backing field
         /// </summary>
-        protected bool SetProperty<T>(ref T field, T newValue, [CallerMemberName] string propertyName = null)
+        protected bool SetProperty<T>(ref T field, T newValue, string propertyName)
         {
             if (IsEqual(field, newValue)) return false;
             field = newValue;
@@ -62,7 +62,7 @@ namespace FlaUInspect.Core
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(GetNameFromExpression(selectorExpression)));
         }
 
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        protected virtual void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }

@@ -14,7 +14,7 @@ namespace FlaUInspect.Core
             }
             catch (Exception ex)
             {
-                return $"Exception getting value ({ex.HResult})";
+                return $"Exception getting value ({ex.Message})";
             }
         }
     }

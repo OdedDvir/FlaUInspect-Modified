@@ -12,7 +12,6 @@ using FlaUI.UIA2;
 using FlaUI.UIA3;
 using FlaUInspect.Core;
 using Microsoft.Win32;
-using System.Text.Json;
 using System.IO;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
@@ -103,16 +102,16 @@ namespace FlaUInspect.ViewModels
 
         public bool IsInitialized
         {
-            get { return GetProperty<bool>(); }
-            private set { SetProperty(value); }
+            get { return GetProperty<bool>("IsInitialized"); }
+            private set { SetProperty(value, "IsInitialized"); }
         }
 
         public bool EnableHoverMode
         {
-            get { return GetProperty<bool>(); }
+            get { return GetProperty<bool>("EnableHoverMode"); }
             set
             {
-                if (SetProperty(value))
+                if (SetProperty(value, "EnableHoverMode"))
                 {
                     if (value) { _hoverMode.Start(); }
                     else { _hoverMode.Stop(); }
@@ -122,10 +121,10 @@ namespace FlaUInspect.ViewModels
 
         public bool EnableFocusTrackingMode
         {
-            get { return GetProperty<bool>(); }
+            get { return GetProperty<bool>("EnableFocusTrackingMode"); }
             set
             {
-                if (SetProperty(value))
+                if (SetProperty(value, "EnableFocusTrackingMode"))
                 {
                     if (value) { _focusTrackingMode.Start(); }
                     else { _focusTrackingMode.Stop(); }
@@ -135,22 +134,20 @@ namespace FlaUInspect.ViewModels
 
         public bool EnableXPath
         {
-            get { return GetProperty<bool>(); }
-            set { SetProperty(value); }
+            get { return GetProperty<bool>("EnableXPath"); }
+            set { SetProperty(value, "EnableXPath"); }
         }
 
         public AutomationType SelectedAutomationType
         {
-            get { return GetProperty<AutomationType>(); }
-            private set { SetProperty(value); }
+            get { return GetProperty<AutomationType>("SelectedAutomationType"); }
+            private set { SetProperty(value, "SelectedAutomationType"); }
         }
 
         public ObservableCollection<ElementViewModel> Elements { get; private set; }
 
         public ICommand StartNewInstanceCommand { get; private set; }
-
         public ICommand CaptureSelectedItemCommand { get; private set; }
-
         public ICommand RefreshCommand { get; private set; }
         public ICommand DumpTree { get; private set; } //eden
 
@@ -158,8 +155,8 @@ namespace FlaUInspect.ViewModels
 
         public ElementViewModel SelectedItemInTree
         {
-            get { return GetProperty<ElementViewModel>(); }
-            private set { SetProperty(value); }
+            get { return GetProperty<ElementViewModel>("SelectedItemInTree"); }
+            private set { SetProperty(value, "SelectedItemInTree"); }
         }
 
         public void Initialize(AutomationType selectedAutomationType)
